@@ -1,0 +1,378 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ contenido.eyebrow }} | Torque Motor</title>
+    <meta
+      name="description"
+      content="Servicio profesional de mecánica automotriz, mantenimiento, frenos, suspensión, diagnóstico electrónico y reparación integral."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/common.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">
+          <span class="brand-mark">T</span>
+          <div>
+            <strong>Torque</strong>
+            <small>Motor</small>
+          </div>
+        </div>
+
+        <nav class="menu">
+          <a href="#inicio">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="#cuenta">Mi cuenta</a>
+          {% if user.is_staff %}
+            <a class="btn btn-secondary" href="{% url 'menu_administrador' %}">Menú administrador</a>
+          {% endif %}
+          <a class="btn btn-primary" href="#formularios-titulo">Agenda tu cita</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">{{ contenido.eyebrow }}</span>
+            <h1>{{ contenido.titulo }}</h1>
+            <p>
+              {{ contenido.descripcion }}
+            </p>
+
+            <div class="hero-actions">
+              <a
+                class="btn btn-primary"
+                href="https://wa.me/{{ contenido.telefono|cut:' '|cut:'+'|cut:'('|cut:')'|cut:'-' }}?text=Hola%2C%20quiero%20solicitar%20un%20diagn%C3%B3stico%20para%20mi%20veh%C3%ADculo."
+                target="_blank"
+                rel="noopener noreferrer"
+              >Solicitar diagnóstico</a>
+              <a class="btn btn-secondary" href="#servicios">Ver servicios</a>
+            </div>
+
+            <ul class="hero-highlights">
+              <li>+15 años de experiencia</li>
+              <li>Atención inmediata</li>
+              <li>Garantía en cada servicio</li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-label="Taller mecánico">
+            <div class="card-feature card-main">
+              <span class="tag">Diagnóstico avanzado</span>
+              <h3>Scan completo</h3>
+              <p>Detectamos fallas con tecnología moderna y precisión.</p>
+            </div>
+
+            <div class="card-feature card-floating">
+              <div class="mini-stat">
+                <strong>4.9/5</strong>
+                <span>Calificación</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="container stats-grid">
+          <div>
+            <strong>12k+</strong>
+            <span>vehículos atendidos</span>
+          </div>
+          <div>
+            <strong>96%</strong>
+            <span>clientes recurrentes</span>
+          </div>
+          <div>
+            <strong>24/7</strong>
+            <span>soporte de emergencia</span>
+          </div>
+          <div>
+            <strong>48h</strong>
+            <span>promedio de entrega</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="servicios" class="services section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Nuestros servicios</span>
+            <h2>Soluciones para cada necesidad automotriz</h2>
+          </div>
+
+          <div class="cards-grid">
+            <article class="service-card">
+              <div class="icon">⚙️</div>
+              <h3>Mantenimiento general</h3>
+              <p>Oil change, filtros, inspección y revisión completa para un mejor rendimiento.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon">🛞</div>
+              <h3>Frenos y suspensión</h3>
+              <p>Reparación y balance del sistema para mayor seguridad y control al volante.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon">🔧</div>
+              <h3>Diagnóstico electrónico</h3>
+              <p>Escaneo computarizado para detectar fallas en motor y sistemas inteligentes.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon">🚗</div>
+              <h3>Reparación integral</h3>
+              <p>Soluciones a medida para motores, transmisión, climatización y más.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="nosotros" class="about section">
+        <div class="container about-grid">
+          <div class="about-image">
+            <div class="image-panel"></div>
+          </div>
+
+          <div class="about-content">
+            <span class="eyebrow">¿Por qué elegirnos?</span>
+            <h2>Calidad, confianza y tecnología en cada reparación</h2>
+            <p>
+              En Torque Motor combinamos experiencia técnica con atención cercana para ofrecer
+              soluciones confiables, rápidas y transparentes para tu auto.
+            </p>
+
+            <ul class="check-list">
+              <li>Diagnóstico preciso con herramientas de última generación</li>
+              <li>Profesionales certificados en mecánica automotriz</li>
+              <li>Trato transparente y procesos con garantía</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="process section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Proceso simple</span>
+            <h2>Así trabajamos</h2>
+          </div>
+
+          <div class="process-grid">
+            <div class="step">
+              <span>01</span>
+              <h3>Consulta</h3>
+              <p>Te escuchamos y revisamos el problema de tu vehículo.</p>
+            </div>
+            <div class="step">
+              <span>02</span>
+              <h3>Diagnóstico</h3>
+              <p>Realizamos evaluación técnica con equipo especializado.</p>
+            </div>
+            <div class="step">
+              <span>03</span>
+              <h3>Reparación</h3>
+              <p>Ejecución clara con calidad, seguridad y tiempos definidos.</p>
+            </div>
+            <div class="step">
+              <span>04</span>
+              <h3>Entrega</h3>
+              <p>Te entregamos tu auto listo y revisado con recomendación final.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonial section">
+        <div class="container testimonial-box">
+          <p>
+            “Excelente atención, diagnóstico rápido y reparación de alta calidad. Mi auto
+            quedó como nuevo y la comunicación fue impecable.”
+          </p>
+          <div class="person">
+            <strong>Daniel R.</strong>
+            <span>Cliente de Torque Motor</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-forms section" aria-labelledby="formularios-titulo">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Atención personalizada</span>
+            <h2 id="formularios-titulo">Cuéntanos qué necesita tu vehículo</h2>
+          </div>
+
+          {% if mensaje %}<p class="form-message" role="status">{{ mensaje }}</p>{% endif %}
+
+          <div class="forms-grid">
+            <details class="form-panel" open>
+              <summary>Agendar una cita</summary>
+              <form id="cita-form" action="{% url 'home' %}" method="post">
+                {% csrf_token %}
+                <label for="nombre-cita">Nombre completo</label>
+                <input id="nombre-cita" name="nombre" type="text" required placeholder="Tu nombre" />
+
+                <label for="telefono-cita">Teléfono</label>
+                <input id="telefono-cita" name="telefono" type="tel" required placeholder="55 1234 5678" />
+
+                <label for="fecha-cita">Fecha preferida</label>
+                <input id="fecha-cita" name="fecha" type="date" required />
+
+                <label for="servicio-cita">Servicio</label>
+                <select id="servicio-cita" name="servicio" required>
+                  <option value="">Selecciona una opción</option>
+                  <option>Mantenimiento general</option>
+                  <option>Frenos y suspensión</option>
+                  <option>Diagnóstico electrónico</option>
+                  <option>Reparación integral</option>
+                  <option>Cotización</option>
+                </select>
+
+                <label for="descripcion-cita">Descripción</label>
+                <textarea id="descripcion-cita" name="descripcion" rows="4" required placeholder="Describe brevemente lo que necesita tu vehículo"></textarea>
+
+                <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+              </form>
+            </details>
+
+            <details class="form-panel">
+              <summary>Solicitar diagnóstico</summary>
+              <form action="{% url 'home' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="tipo" value="diagnostico" />
+                <label for="nombre-diagnostico">Nombre completo</label>
+                <input id="nombre-diagnostico" name="nombre" type="text" required placeholder="Tu nombre" />
+
+                <label for="vehiculo-diagnostico">Vehículo</label>
+                <input id="vehiculo-diagnostico" name="vehiculo" type="text" required placeholder="Marca, modelo y año" />
+
+                <label for="problema-diagnostico">Describe el problema</label>
+                <textarea id="problema-diagnostico" name="problema" rows="4" required placeholder="¿Qué sucede con tu vehículo?"></textarea>
+
+                <button class="btn btn-primary" type="submit">Solicitar diagnóstico</button>
+              </form>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="cuenta" class="account section" aria-labelledby="cuenta-titulo">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Área de clientes</span>
+            <h2 id="cuenta-titulo">Administra tu cuenta</h2>
+          </div>
+
+          {% if messages %}
+            <div class="form-message" role="status">
+              {% for message in messages %}{{ message }}{% endfor %}
+            </div>
+          {% endif %}
+
+          {% if user.is_authenticated %}
+            <div class="account-welcome">
+              <p>Has iniciado sesión como <strong>{{ user.username }}</strong>.</p>
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-secondary" type="submit">Cerrar sesión</button>
+              </form>
+            </div>
+          {% else %}
+            <div class="forms-grid account-grid">
+              <details class="form-panel" open>
+                <summary>Crear una cuenta</summary>
+                <form action="{% url 'registro' %}" method="post">
+                  {% csrf_token %}
+                  <label for="username-registro">Usuario</label>
+                  <input id="username-registro" name="username" type="text" required autocomplete="username" />
+
+                  <label for="email-registro">Correo electrónico</label>
+                  <input id="email-registro" name="email" type="email" required autocomplete="email" />
+
+                  <label for="password-registro">Contraseña</label>
+                  <input id="password-registro" name="password" type="password" required minlength="8" autocomplete="new-password" />
+
+                  <label for="confirmation-registro">Confirmar contraseña</label>
+                  <input id="confirmation-registro" name="password_confirmation" type="password" required minlength="8" autocomplete="new-password" />
+
+                  <button class="btn btn-primary" type="submit">Crear cuenta</button>
+                </form>
+              </details>
+
+              <details class="form-panel">
+                <summary>Iniciar sesión</summary>
+                <form action="{% url 'login' %}" method="post">
+                  {% csrf_token %}
+                  <label for="username-login">Usuario</label>
+                  <input id="username-login" name="username" type="text" required autocomplete="username" />
+
+                  <label for="password-login">Contraseña</label>
+                  <input id="password-login" name="password" type="password" required autocomplete="current-password" />
+
+                  <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+                </form>
+              </details>
+            </div>
+          {% endif %}
+        </div>
+      </section>
+    </main>
+
+    <footer id="contacto" class="footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="brand footer-brand">
+            <span class="brand-mark">T</span>
+            <div>
+              <strong>Torque</strong>
+              <small>Motor</small>
+            </div>
+          </div>
+          <p>Especialistas en mecánica automotriz para mantener tu vehículo en óptimas condiciones.</p>
+        </div>
+
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li>{{ contenido.direccion }}</li>
+            <li>{{ contenido.telefono }}</li>
+            <li>{{ contenido.correo }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Horarios</h4>
+          <ul>
+            <li>Lun - Sáb: 8:00 - 19:00</li>
+            <li>Domingos: Emergencias</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container bottom-bar">
+        <span>© 2026 Torque Motor. Todos los derechos reservados.</span>
+        <a href="#inicio">Volver arriba</a>
+      </div>
+    </footer>
+
+  </body>
+</html>

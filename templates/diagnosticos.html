@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagnósticos | Torque Motor</title>
+    <link rel="stylesheet" href="{% static 'css/common.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/diagnosticos.css' %}" />
+  </head>
+  <body class="admin-page">
+    <main class="admin-shell">
+      <div class="admin-header">
+        <div>
+          <span class="eyebrow">Panel privado</span>
+          <h1>Diagnósticos</h1>
+          <p>Revisa las solicitudes y registra el resultado de cada diagnóstico.</p>
+        </div>
+        <div class="admin-header-actions">
+          <a class="btn btn-secondary" href="{% url 'menu_administrador' %}">Editar landing</a>
+          <a class="btn btn-secondary" href="{% url 'home' %}">Ver landing</a>
+        </div>
+      </div>
+
+      {% if messages %}
+        <div class="form-message" role="status">
+          {% for message in messages %}{{ message }}{% endfor %}
+        </div>
+      {% endif %}
+
+      {% if solicitudes %}
+        <div class="diagnostic-list">
+          {% for indice, solicitud in solicitudes %}
+            <article class="diagnostic-card">
+              <div class="diagnostic-card-header">
+                <div>
+                  <span class="diagnostic-number">Solicitud #{{ forloop.counter }}</span>
+                  <h2>{{ solicitud.nombre }}</h2>
+                </div>
+                <span class="diagnostic-status">{{ solicitud.estado|default:'Pendiente' }}</span>
+              </div>
+              <dl class="diagnostic-details">
+                <div><dt>Vehículo</dt><dd>{{ solicitud.vehiculo }}</dd></div>
+                <div><dt>Problema</dt><dd>{{ solicitud.problema }}</dd></div>
+                <div><dt>Recibida</dt><dd>{{ solicitud.created_at|default:'Sin fecha' }}</dd></div>
+              </dl>
+              <form class="diagnostic-form" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="indice" value="{{ indice }}" />
+                <label for="estado-{{ indice }}">Estado</label>
+                <select id="estado-{{ indice }}" name="estado">
+                  <option{% if solicitud.estado == 'Pendiente' or not solicitud.estado %} selected{% endif %}>Pendiente</option>
+                  <option{% if solicitud.estado == 'En revisión' %} selected{% endif %}>En revisión</option>
+                  <option{% if solicitud.estado == 'Completado' %} selected{% endif %}>Completado</option>
+                </select>
+                <label for="resultado-{{ indice }}">Resultado del diagnóstico</label>
+                <textarea id="resultado-{{ indice }}" name="resultado" rows="4" maxlength="1000" required placeholder="Escribe la falla detectada, recomendaciones y próximos pasos">{{ solicitud.resultado }}</textarea>
+                <button class="btn btn-primary" type="submit">Guardar diagnóstico</button>
+              </form>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="empty-state">
+          <h2>No hay solicitudes de diagnóstico</h2>
+          <p>Cuando un cliente envíe una solicitud desde la landing, aparecerá aquí.</p>
+          <a class="btn btn-primary" href="{% url 'home' %}#formularios-titulo">Crear solicitud de prueba</a>
+        </div>
+      {% endif %}
+    </main>
+  </body>
+</html>

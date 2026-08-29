@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú administrador | Torque Motor</title>
+    <link rel="stylesheet" href="{% static 'css/common.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}" />
+  </head>
+  <body class="admin-page">
+    <main class="admin-shell">
+      <div class="admin-header">
+        <div>
+          <span class="eyebrow">Panel privado</span>
+          <h1>Menú administrador</h1>
+          <p>Actualiza el contenido visible de la página principal.</p>
+        </div>
+        <div class="admin-header-actions">
+          <a class="btn btn-secondary" href="{% url 'diagnosticos' %}">Diagnósticos</a>
+          <a class="btn btn-secondary" href="{% url 'home' %}">Ver landing</a>
+        </div>
+      </div>
+
+      {% if messages %}
+        <div class="form-message" role="status">
+          {% for message in messages %}{{ message }}{% endfor %}
+        </div>
+      {% endif %}
+
+      <form class="admin-form" method="post">
+        {% csrf_token %}
+        <div class="admin-form-grid">
+          <div class="admin-field admin-field-wide">
+            <label for="eyebrow">Texto superior</label>
+            <input id="eyebrow" name="eyebrow" type="text" value="{{ contenido.eyebrow }}" maxlength="500" required />
+          </div>
+          <div class="admin-field admin-field-wide">
+            <label for="titulo">Título principal</label>
+            <input id="titulo" name="titulo" type="text" value="{{ contenido.titulo }}" maxlength="500" required />
+          </div>
+          <div class="admin-field admin-field-wide">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" rows="5" maxlength="500" required>{{ contenido.descripcion }}</textarea>
+          </div>
+          <div class="admin-field">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" value="{{ contenido.telefono }}" maxlength="500" required />
+          </div>
+          <div class="admin-field">
+            <label for="correo">Correo electrónico</label>
+            <input id="correo" name="correo" type="email" value="{{ contenido.correo }}" maxlength="500" required />
+          </div>
+          <div class="admin-field admin-field-wide">
+            <label for="direccion">Dirección</label>
+            <input id="direccion" name="direccion" type="text" value="{{ contenido.direccion }}" maxlength="500" required />
+          </div>
+        </div>
+        <div class="admin-actions">
+          <a class="btn btn-secondary" href="{% url 'home' %}">Cancelar</a>
+          <button class="btn btn-primary" type="submit">Guardar cambios</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

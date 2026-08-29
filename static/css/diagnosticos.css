@@ -1,0 +1,18 @@
+.diagnostic-list { display: grid; gap: 22px; }
+.diagnostic-card, .empty-state { padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: rgba(16, 26, 42, 0.86); box-shadow: var(--shadow); }
+.diagnostic-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 24px; }
+.diagnostic-number { color: var(--primary); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.diagnostic-card h2, .empty-state h2 { margin: 8px 0 0; font-size: 1.55rem; }
+.diagnostic-status { flex: 0 0 auto; padding: 8px 12px; border: 1px solid rgba(255, 183, 3, 0.3); border-radius: 999px; color: var(--primary); background: rgba(255, 183, 3, 0.1); font-size: 0.8rem; font-weight: 700; }
+.diagnostic-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 0 0 26px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.diagnostic-details div { min-width: 0; }
+.diagnostic-details dt { margin-bottom: 6px; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.diagnostic-details dd { margin: 0; color: var(--text); line-height: 1.5; overflow-wrap: anywhere; }
+.diagnostic-form { display: grid; grid-template-columns: 180px 1fr auto; gap: 10px 14px; align-items: center; }
+.diagnostic-form label { color: var(--muted); font-size: 0.9rem; }
+.diagnostic-form textarea, .diagnostic-form select { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 13px 14px; background: var(--panel); color: var(--text); font: inherit; }
+.diagnostic-form textarea { grid-column: 2 / -1; resize: vertical; }
+.diagnostic-form button { grid-column: 2 / -1; justify-self: end; }
+.empty-state { text-align: center; }
+.empty-state p { margin: 12px auto 24px; }
+@media (max-width: 620px) { .diagnostic-card, .empty-state { padding: 22px; } .diagnostic-card-header, .diagnostic-details { display: grid; grid-template-columns: 1fr; } .diagnostic-form { display: grid; grid-template-columns: 1fr; } .diagnostic-form textarea, .diagnostic-form button { grid-column: auto; } .diagnostic-form button { justify-self: stretch; } }

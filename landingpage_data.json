@@ -1,0 +1,25 @@
+[
+  {
+    "nombre": "Prueba navegador",
+    "telefono": "5511112222",
+    "fecha": "2026-09-15",
+    "servicio": "Diagnóstico electrónico",
+    "tipo": "cita",
+    "created_at": "2026-08-25T18:31:14.787621+00:00"
+  },
+  {
+    "nombre": "Prueba diagnóstico",
+    "vehiculo": "Toyota Corolla 2020",
+    "problema": "Prueba de envío",
+    "tipo": "diagnostico",
+    "created_at": "2026-08-25T18:31:45.301404+00:00"
+  },
+  {
+    "nombre": "Vicente Vega",
+    "telefono": "8765 4321",
+    "fecha": "2025-01-01",
+    "servicio": "Mantenimiento general",
+    "tipo": "cita",
+    "created_at": "2026-08-25T18:34:46.659187+00:00"
+  }
+]

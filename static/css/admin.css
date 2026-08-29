@@ -1,0 +1,15 @@
+.admin-page { min-height: 100vh; padding: 48px 0; background: radial-gradient(circle at 15% 0%, rgba(255, 183, 3, 0.12), transparent 30%), linear-gradient(180deg, #0a0f18 0%, #101827 100%); }
+.admin-shell { width: min(900px, calc(100% - 32px)); margin: 0 auto; }
+.admin-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+.admin-header h1 { margin-bottom: 12px; font-size: clamp(2.4rem, 5vw, 4rem); }
+.admin-header p { margin-bottom: 0; }
+.admin-header-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; }
+.admin-form { padding: 32px; border: 1px solid var(--line); border-radius: 24px; background: rgba(16, 26, 42, 0.86); box-shadow: var(--shadow); }
+.admin-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.admin-field { display: grid; gap: 8px; }
+.admin-field-wide { grid-column: 1 / -1; }
+.admin-field label { color: var(--muted); font-size: 0.9rem; font-weight: 600; }
+.admin-field input, .admin-field textarea { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 13px 14px; background: var(--panel); color: var(--text); font: inherit; }
+.admin-field input:focus, .admin-field textarea:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+.admin-actions { display: flex; justify-content: flex-end; gap: 14px; margin-top: 30px; }
+@media (max-width: 620px) { .admin-page { padding: 28px 0; } .admin-header, .admin-form-grid { display: grid; } .admin-header-actions { justify-content: stretch; } .admin-form { padding: 22px; } .admin-field-wide { grid-column: auto; } .admin-actions { display: grid; } }
